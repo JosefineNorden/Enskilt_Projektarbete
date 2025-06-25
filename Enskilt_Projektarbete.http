@@ -1,0 +1,6 @@
+@Enskilt_Projektarbete_HostAddress = http://localhost:5214
+
+GET {{Enskilt_Projektarbete_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
