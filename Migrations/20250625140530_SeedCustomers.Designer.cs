@@ -4,6 +4,7 @@ using Enskilt_Projektarbete.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Enskilt_Projektarbete.Migrations
 {
     [DbContext(typeof(PadelBookingContext))]
-    partial class PadelBookingContextModelSnapshot : ModelSnapshot
+    [Migration("20250625140530_SeedCustomers")]
+    partial class SeedCustomers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,24 +50,6 @@ namespace Enskilt_Projektarbete.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Bookings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CourtNumber = 1,
-                            CustomerId = 1,
-                            EndTime = new DateTime(2025, 6, 26, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartTime = new DateTime(2025, 6, 26, 10, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CourtNumber = 2,
-                            CustomerId = 2,
-                            EndTime = new DateTime(2025, 6, 26, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            StartTime = new DateTime(2025, 6, 26, 14, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("Enskilt_Projektarbete.Models.Customer", b =>

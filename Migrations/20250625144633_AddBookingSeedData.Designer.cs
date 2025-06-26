@@ -4,6 +4,7 @@ using Enskilt_Projektarbete.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Enskilt_Projektarbete.Migrations
 {
     [DbContext(typeof(PadelBookingContext))]
-    partial class PadelBookingContextModelSnapshot : ModelSnapshot
+    [Migration("20250625144633_AddBookingSeedData")]
+    partial class AddBookingSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
