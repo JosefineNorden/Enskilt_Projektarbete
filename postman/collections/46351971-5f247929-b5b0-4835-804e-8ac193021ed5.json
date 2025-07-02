@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "46351971-5f247929-b5b0-4835-804e-8ac193021ed5",
+		"name": "PadelBookingAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Boka PadelBana i en timme",
+			"id": "46351971-de8b55ee-f1fb-4e86-8b14-8bbb7aeaa64a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courtNumber\": 1,\r\n  \"startTime\": \"2025-07-02T10:00:00\",\r\n  \"endTime\": \"2025-07-02T11:00:00\",\r\n  \"customerId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7021/api/booking",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Se översikt bokningar",
+			"id": "46351971-ac6667dd-6384-45aa-b94b-f1e601dfadf3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7021/api/booking",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Se lediga tider och banor för ett visst datum",
+			"id": "46351971-41f957cf-0fb6-4607-b7b9-7538577a16e4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7021/api/Booking/available?date=2025-06-26",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"Booking",
+						"available"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-06-26"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kontroll dubbelbokning",
+			"id": "46351971-9c702ef2-2196-41c2-8853-7ae917b95e12",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courtNumber\": 2,\r\n  \"startTime\": \"2025-07-01T14:00:00\",\r\n  \"endTime\": \"2025-07-01T15:00:00\",\r\n  \"customerId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7021/api/booking",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kontoll att bana två inte är ledig 14:00",
+			"id": "46351971-b2deb9e8-dd25-41d0-9629-05d658748a03",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7021/api/booking/available?date=2025-07-01",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking",
+						"available"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-07-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kontrollera bokningar mellan två datum",
+			"id": "46351971-3acd32d9-3c7d-4938-ae66-150b612fb427",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7021/api/booking/between?from=2025-07-01&to=2025-07-04",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking",
+						"between"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2025-07-01"
+						},
+						{
+							"key": "to",
+							"value": "2025-07-04"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kontroll av bokning före öppetid",
+			"id": "46351971-beda1498-7155-4ee5-8096-721ba3858007",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courtNumber\": 2,\r\n  \"startTime\": \"2025-07-02T06:00:00\",\r\n  \"endTime\": \"2025-07-02T07:00:00\",\r\n  \"customerId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7021/api/booking",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kontroll av bokning hel timme",
+			"id": "46351971-d2ad7fa7-054a-4eaf-9234-11512ae8c7ec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courtNumber\": 1,\r\n  \"startTime\": \"2025-07-02T10:15:00\",\r\n  \"endTime\": \"2025-07-02T11:15:00\",\r\n  \"customerId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7021/api/booking",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kontroll bokade banor mellan två datum",
+			"id": "46351971-5cb2bf55-8bd9-4f2a-8380-ea84e68c211e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7021/api/booking/count-between?start=2025-07-01&end=2025-07-02",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"booking",
+						"count-between"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2025-07-01"
+						},
+						{
+							"key": "end",
+							"value": "2025-07-02"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Se bokade banor ett visst datum",
+			"id": "46351971-fd08cbb2-0c24-4ecc-ac9f-474e584faa88",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7021/api/Booking/by-date?date=2025-07-01",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7021",
+					"path": [
+						"api",
+						"Booking",
+						"by-date"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-07-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
